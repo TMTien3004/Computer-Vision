@@ -24,7 +24,7 @@ while True:
                 # print(id, lm)
                 h, w, c = img.shape # Find the height, width and channels of the image
                 cx, cy = int(lm.x * w), int(lm.y * h) # Find position of the image
-                print(id, cx, cy)
+                print(id, cx, cy) # Print the position of the image
 
                 if id == 4:
                     cv2.circle(img, (cx, cy), 25, (255, 0 ,255), cv2.FILLED)
