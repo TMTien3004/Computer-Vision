@@ -14,6 +14,7 @@ class handDetector():
                                         self.detectionCon, self.trackCon) # We use the default input parameter of the Hands() function.
         self.mpDraw = mp.solutions.drawing_utils
 
+        self.tipIds = [4, 8, 12, 16, 20]
  
     # Create a function to find the hands
     def findHands(self, img, draw=True):
@@ -33,7 +34,7 @@ class handDetector():
     # Track the position of the hand
     def findPosition(self, img, handNo=0, draw=True):
 
-        lmList = []
+        self.lmList = []
         if self.results.multi_hand_landmarks:  # Check if there is anything on the screen
             myHand = self.results.multi_hand_landmarks[handNo]
             for id, lm in enumerate(myHand.landmark):
@@ -41,12 +42,30 @@ class handDetector():
                 h, w, c = img.shape # Find the height, width and channels of the image
                 cx, cy = int(lm.x * w), int(lm.y * h) # Find position of the image
                 # print(id, cx, cy) # Print the position of the image
-                lmList.append([id, cx, cy])
+                self.lmList.append([id, cx, cy])
                 if draw:
                     cv2.circle(img, (cx, cy), 15, (255, 0 ,255), cv2.FILLED)
 
-        return lmList
+        return self.lmList
 
+    # Count how many fingers are raised
+    def fingersUp(self):
+        fingers = []
+
+        # Thumb
+        if self.lmList[self.tipIds[0]][1] < self.lmList[self.tipIds[0] - 1][1]:
+            fingers.append(1)
+        else:
+            fingers.append(0)
+
+        # The rest of 4 fingers
+        for id in range(1, 5):
+            if self.lmList[self.tipIds[id]][2] < self.lmList[self.tipIds[id] - 2][2]:
+                fingers.append(1)
+            else:
+                fingers.append(0)
+
+        return fingers
 
 def main():
     pTime = 0
