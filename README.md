@@ -20,9 +20,9 @@ Use your index finger to draw. Whenever you need to erase or change color, raise
 
 ## Virtual Mouse Clicker
 ### Features
-WIP
+You can control your computer mouse by using your index and middle fingers. 
 ### Instructions
-WIP
+Use your index finger and hover around the purple box on the camera to scroll your mouse around the screen. If you want to click, raise both your index and middle finger.
 
 ## Acknowledgments
-The idea for this project came from Murtaza Hassan, the person behind the video: "Advanced Computer Vision with Python" by freeCodeCamp. 
+The idea for this project came from Murtaza Hassan, the person behind the video: "Advanced Computer Vision with Python" from freeCodeCamp. 
