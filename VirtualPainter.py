@@ -1,5 +1,4 @@
 import os
-import time
 import numpy as np
 import cv2
 import HandTrackingModule as htm
@@ -62,7 +61,7 @@ while True:
                     drawColor = (255, 0, 255)
                 elif 550 < x1 < 750:
                     header = overLayList[1]
-                    drawColor = (255, 0, 0)
+                    drawColor = (255, 69, 0)
                 elif 800 < x1 < 950:
                     header = overLayList[2]
                     drawColor = (0, 255, 0)
